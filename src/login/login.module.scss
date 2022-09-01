@@ -1,0 +1,149 @@
+
+@mixin spans {
+    color: rgb(204, 7, 7);
+    background-color: rgba(245, 67, 67, 0.13);
+    box-shadow:1px 0px 6px rgba(245, 67, 67, 0.13);
+    margin-left: 3px !important;
+    font-size: .8em;
+}
+
+@mixin box {
+            
+    width: 100%;
+    margin-bottom: 5px;
+
+    input{
+        &:focus{
+            outline-color:  rgb(82, 82, 241);
+        }
+        height: 40px;
+        width: 100%;
+        border: 1px solid silver;
+        border-radius: 5px;
+        padding: 5px;
+        box-sizing: border-box ;
+        margin-bottom: 3px;
+    }
+    label{
+        width: 100% ;
+        text-align: left ;
+        display: block;
+        padding: 5px; 
+        box-sizing: border-box ;
+      
+    }
+    span{
+        @include spans()
+    }
+
+}
+
+
+.container{
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background-color: rgb(209, 209, 209);
+    margin: 0;
+    padding-top: 40px;
+    
+    .form{
+        width: 40%;
+        height: max-content;
+        border: 2px solid silver;
+        border-radius: 8px;
+        background-color: white;
+        margin: auto;
+        padding: 22px;
+        *{text-align: left;}
+
+        .title{
+            color: rgb(82, 82, 241);
+            font-size: 2em;
+            font-weight: bold;
+            text-align: left;
+        }
+      
+        .inputBox{
+           @include box();
+
+        }
+        .errors{
+            @include box();
+            input{
+                &::placeholder{
+                    color:rgba(187, 20, 20, 0.329) ;
+                }
+                outline-color:rgba(187, 20, 20, 0.589) !important ;
+                border:1px solid rgba(187, 20, 20, 0.589) !important ;
+            }
+        }
+
+        .inputBox2{
+            width: 100%;
+            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            input{
+                height: 20px;
+                width: 20px;
+                cursor: pointer;
+            }
+            label{
+                
+                cursor: pointer;
+                text-align: left ;
+                display: block;
+                padding: 5px; 
+                box-sizing: border-box ;
+            }
+            div{
+                width: 100%;
+                span{
+                    @include spans()
+                }
+            }
+        }
+        .rowButton{
+            width: 100%;
+            margin: 15px 0px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            button{
+                height: 35px;
+                width: max-content;
+                border-radius: 5px;
+                font-size: 1.1em;
+                padding: 5px 12px;
+                cursor: pointer;
+            }
+            .login{
+                border: none;
+                background-color: transparent;
+                color: rgb(82, 82, 241);
+                text-decoration: none;
+                font-weight: bold;
+            }
+            .sing{
+                background-color: rgb(82, 82, 241);
+                color: aliceblue;
+                border: none;
+            }
+        }
+    }
+}
+
+@media  screen and (max-width: 720px) {
+    .form{
+        width: 80% !important;
+    }
+}
+@media only screen 
+and (min-width: 720px)  
+and (max-width:960px) {
+    .form{
+        width: 60% !important;
+    }
+}
